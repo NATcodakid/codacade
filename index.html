@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Codacade — A retro 80s web arcade featuring classic and modern mini-games with neon synthwave aesthetics.">
+    <title>CODACADE — Retro Arcade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Scanline overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <h1 class="logo" onclick="window.router.navigate('arcade')">
+                <span class="logo-c">C</span><span class="logo-o">O</span><span class="logo-d">D</span><span
+                    class="logo-a">A</span><span class="logo-c2">C</span><span class="logo-a2">A</span><span
+                    class="logo-d2">D</span><span class="logo-e">E</span>
+            </h1>
+            <div class="header-right" id="header-right">
+                <button class="btn-retro btn-sm" id="auth-btn" onclick="window.auth.showModal()">LOGIN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main class="main-content" id="main-content"></main>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="auth-modal" style="display:none;">
+        <div class="modal">
+            <button class="modal-close" onclick="window.auth.hideModal()">✕</button>
+            <div class="modal-tabs">
+                <button class="tab active" id="tab-login" onclick="window.auth.switchTab('login')">LOGIN</button>
+                <button class="tab" id="tab-signup" onclick="window.auth.switchTab('signup')">SIGN UP</button>
+            </div>
+            <form class="auth-form" id="auth-form" onsubmit="return window.auth.handleSubmit(event)">
+                <div class="form-group">
+                    <label for="auth-username">USERNAME</label>
+                    <input type="text" id="auth-username" class="input-retro" required minlength="3" maxlength="16"
+                        autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="auth-password">PASSWORD</label>
+                    <input type="password" id="auth-password" class="input-retro" required minlength="4"
+                        autocomplete="current-password">
+                </div>
+                <p class="auth-error" id="auth-error"></p>
+                <button type="submit" class="btn-retro btn-full" id="auth-submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Vite ES Module Entry -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
